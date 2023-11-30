@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+
+body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      
+    .container {
+      width: 500px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+    .container h2 {
+      text-align: center;
+    }
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    .container .password-container {
+        margin-top: 0;
+      position: relative;
+    }
+    .container .password-container input[type="password"] {
+      padding-right: 40px;
+    }
+    .container .password-container .eye-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .container .password-container .eye-icon i {
+      font-size: 20px;
+    }
+    .container .forgot-password {
+      font-size: 12px;
+      text-align: end;
+      margin-bottom: 0;
+    }
+    .container .login-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: blue;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100px;
+      margin:0 auto;
+    }
+    
+  </style>
+</head>
+<body>
+  <form> <!-- Added the <form> tag -->
+    <div class="container">
+      <h2>Login</h2>
+      <input type="text" placeholder="Email">
+      <div class="forgot-password">
+          <h3>Forgot password?</h3>
+      </div>
+      <div class="password-container">
+        <input type="password" id="passwordInput" placeholder="Password">
+        <span class="eye-icon" onclick="togglePasswordVisibility()">
+          <i id="eyeIcon" class="fa fa-eye"></i>
+        </span>
+      </div>
+      <button type="submit" class="login-button">
+        <i class="fa fa-sign-in"></i>Login
+      </button>
+    </div>
+  </form> <!-- Added the closing </form> tag -->
+
+  <script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("passwordInput");
+      var eyeIcon = document.getElementById("eyeIcon");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+    }
+  </script>
+</body>
+</html>

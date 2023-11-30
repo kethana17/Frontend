@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+
+body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      
+    .container {
+      width: 500px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+    .container h2 {
+      text-align: center;
+    }
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    .container .password-container {
+        margin-top: 0;
+      position: relative;
+    }
+    .container .password-container input[type="password"] {
+      padding-right: 40px;
+    }
+    .container .password-container .eye-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .container .password-container .eye-icon i {
+      font-size: 20px;
+    }
+    .container .forgot-password {
+      font-size: 12px;
+      text-align: end;
+      margin-bottom: 0;
+    }
+    .container .login-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: blue;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100px;
+      margin:0 auto;
+    }
+    
+  </style>
+</head>
+
+<body ng-controller="registrationController">
+  <form name="registrationForm" ng-submit="submitForm()" novalidate>
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <!-- First Name -->
+      <div class="form-group">
+        <input type="text" ng-model="user.firstName" placeholder="First Name" required>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <input type="text" ng-model="user.lastName" placeholder="Last Name" required>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="form-group">
+        <input type="text" ng-model="user.mobileNumber" placeholder="Mobile Number" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <input type="text" ng-model="user.email" placeholder="Email" required>
+      </div>
+
+      <!-- Password -->
+      <div class="password-container form-group">
+        <input type="password" ng-model="user.password" id="passwordInput" placeholder="Password" required>
+        <span class="eye-icon" ng-click="togglePasswordVisibility()">
+          <i id="eyeIcon" class="fa" ng-class="{'fa-eye': !passwordVisible, 'fa-eye-slash': passwordVisible}"></i>
+        </span>
+      </div>
+
+      <button type="submit" class="login-button">Register</button>
+    </div>
+  </form>
+
+  <script>
+    var app = angular.module('registrationApp', []);
+
+    app.controller('registrationController', function ($scope) {
+      $scope.user = {};
+
+      $scope.passwordVisible = false;
+
+      $scope.togglePasswordVisibility = function () {
+        $scope.passwordVisible = !$scope.passwordVisible;
+        var passwordInput = document.getElementById("passwordInput");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if ($scope.passwordVisible) {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      };
+
+      $scope.submitForm = function () {
+        // Handle form submission logic here
+        console.log('Form submitted with data:', $scope.user);
+      };
+    });
+  </script>
+</body>
+
+
+</html>

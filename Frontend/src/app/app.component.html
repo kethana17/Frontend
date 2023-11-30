@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <ul class="nav-list">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/contact-us" routerLinkActive="active">Contact Us</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<app-welcome></app-welcome>
+<app-login *ngIf="showLoginForm" (close)="toggleLoginForm()"></app-login>
+<app-register *ngIf="showRegisterForm" (close)="toggleRegistrationForm()"></app-register>
